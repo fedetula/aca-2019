@@ -23,7 +23,7 @@ module memory32 #(parameter DEPTH=8) (
             mem[wr_addr_i[DEPTH-1:2]] <= wr_data_i;
 
     initial begin
-        $readmemh("/home/fedetula/data/hdl/riscv-unicycle-v1/mem_files/fibonacci.mem", mem);
+        $readmemh("fibonacci.mem", mem);
     end
     
 endmodule

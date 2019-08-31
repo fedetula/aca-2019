@@ -17,4 +17,4 @@ default: $(MEM)
 .PHONY: clean
 
 clean:
-	rm -f *.o *.mem *.hex *.elf
+	rm -f src/*.o mem_files/fibonacci.mem 
