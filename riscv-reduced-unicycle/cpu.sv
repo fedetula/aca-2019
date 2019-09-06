@@ -3,10 +3,12 @@ module cpu(input  logic clk, rst,
            input  logic [31:0] inst_data,
            output logic [31:0] data_addr,
            output logic [31:0] data_out,
+           input  logic [31:0] data_in,
            output logic        data_write);
 
        typedef enum logic[1:0] {ADD, SUB, AND, OR} alu_op_t;
        typedef enum logic {FROM_RS2, FROM_IMMED} alu_src2_t;
+       typedef enum logic {FROM_ALU, FROM_MEM} rf_data_in_t;
 
        logic [31:0] pc, rs1_data, rs2_data, rd_data, immed;
        logic [31:0] rf[32];
@@ -16,6 +18,7 @@ module cpu(input  logic clk, rst,
        // Control signals (also data_write)
        alu_op_t alu_op;
        alu_src2_t alu_src2;
+       rf_data_in_t rf_data_in;
        logic rf_write;
 
        // Instruction Bus
@@ -38,15 +41,21 @@ module cpu(input  logic clk, rst,
           alu_src2 = FROM_RS2;
           rf_write = 1;
           data_write = 0;
+          rf_data_in = FROM_ALU;
 
           case (inst_data) inside
               {7'b0000_000, 5'b?, 5'b?, 3'b000, 5'b?, 7'b0110011}: ;
               {7'b0100_000, 5'b?, 5'b?, 3'b000, 5'b?, 7'b0110011}: alu_op = SUB;
               {7'b0000_000, 5'b?, 5'b?, 3'b111, 5'b?, 7'b0110011}: alu_op = AND;
               {7'b0000_000, 5'b?, 5'b?, 3'b110, 5'b?, 7'b0110011}: alu_op = OR;
-              {7'b?       , 5'b?, 5'b?, 3'b010, 5'b?, 7'b0100011}: begin
+              {7'b?       , 5'b?, 5'b?, 3'b010, 5'b?, 7'b0100011}: begin  // SW
                                                                        alu_src2 = FROM_IMMED;
+                                                                       rf_write = 0;
                                                                        data_write = 1;
+                                                                       immed = 32'(signed'({inst_data[31:25], inst_data[11:7]}));
+                                                                   end
+              {7'b?       , 5'b?, 5'b?, 3'b010, 5'b?, 7'b0000011}: begin  // LW
+                                                                       alu_src2 = FROM_IMMED;
                                                                    end
           endcase
        end
@@ -57,7 +66,7 @@ module cpu(input  logic clk, rst,
            else     pc <= pc + 4;
 
        // RF Write
-       always_comb rd_data = alu_out;
+       always_comb rd_data = (rf_data_in == FROM_ALU) ? alu_out : data_in;
 
        always_ff @(posedge clk)
            if (rd_addr != '0 && rf_write)
