@@ -54,6 +54,7 @@ module cpu(input  logic clk, rst,
               {7'b0100_000, 5'b?, 5'b?, 3'b000, 5'b?, 7'b0110011}: alu_op = SUB;
               {7'b0000_000, 5'b?, 5'b?, 3'b111, 5'b?, 7'b0110011}: alu_op = AND;
               {7'b0000_000, 5'b?, 5'b?, 3'b110, 5'b?, 7'b0110011}: alu_op = OR;
+              {7'b?       , 5'b?, 5'b?, 3'b000, 5'b?, 7'b0010011}: alu_src2 = FROM_IMMED; // ADDI
               {7'b?       , 5'b?, 5'b?, 3'b010, 5'b?, 7'b0100011}: begin  // SW
                                                                        alu_src2 = FROM_IMMED;
                                                                        rf_write = 0;
