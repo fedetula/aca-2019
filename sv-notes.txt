@@ -1,0 +1,2 @@
+always_comb safer than assign: (better when RHS calls a function)
+https://bradpierce.wordpress.com/2009/12/04/sv-always_comb-safer-than-verilog-assign/

@@ -64,6 +64,7 @@ module cpu(input  logic clk, rst,
                                                                    end
               {7'b?       , 5'b?, 5'b?, 3'b010, 5'b?, 7'b0000011}: begin  // LW
                                                                        alu_src2 = FROM_IMMED;
+                                                                       rf_data_in = FROM_MEM;
                                                                    end
               {7'b?       , 5'b?, 5'b?, 3'b000, 5'b?, 7'b1100011}: begin  // BEQ
                                                                        pc_flow = INST_BEQ;
@@ -102,7 +103,7 @@ module cpu(input  logic clk, rst,
        always_comb begin
            alu_in1 = rs1_data;
            alu_in2 = (alu_src2 == FROM_IMMED) ? immed : rs2_data;
-           rd_data = 'x;
+           alu_out = 'x;
            case (alu_op) inside
                 ADD: alu_out = alu_in1 + alu_in2;
                 SUB: alu_out = alu_in1 - alu_in2;
