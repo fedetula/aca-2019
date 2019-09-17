@@ -1,0 +1,7 @@
+For 2020:
+    - add timing analysis (explore timing failure on implementation)
+    - decode signals in waveform
+    - create docker to re-use project.tcl with students
+    - add reporting scripts (area, timing, error checking)
+    - provide restricted riscv assembler for used instructions only
+    - provide assembler simulator to test their own fibonacci code

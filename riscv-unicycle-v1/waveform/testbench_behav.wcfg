@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="testbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="2552866fs"></ZoomEndTime>
+      <Cursor1Time time="339000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="145"></NameColumnWidth>
+      <ValueColumnWidth column_width="81"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="26" />
+   <wvobject type="logic" fp_name="/testbench/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/sw">
+      <obj_property name="ElementShortName">sw[3:0]</obj_property>
+      <obj_property name="ObjectShortName">sw[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/led">
+      <obj_property name="ElementShortName">led[3:0]</obj_property>
+      <obj_property name="ObjectShortName">led[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider13" type="divider">
+      <obj_property name="label">CPU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/pc">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/inst_data">
+      <obj_property name="ElementShortName">inst_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/data_addr">
+      <obj_property name="ElementShortName">data_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/alu_in1">
+      <obj_property name="ElementShortName">alu_in1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_in1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/alu_in2">
+      <obj_property name="ElementShortName">alu_in2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_in2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/alu_out">
+      <obj_property name="ElementShortName">alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/cpu_inst/rf">
+      <obj_property name="ElementShortName">rf[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf[0:31][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider12" type="divider">
+      <obj_property name="label">Decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/decoder_inst/switch_data_i">
+      <obj_property name="ElementShortName">switch_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">switch_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/decoder_inst/addr_i">
+      <obj_property name="ElementShortName">addr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/decoder_inst/mem_data_i">
+      <obj_property name="ElementShortName">mem_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/dut/decoder_inst/write_i">
+      <obj_property name="ElementShortName">write_i</obj_property>
+      <obj_property name="ObjectShortName">write_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/dut/decoder_inst/mem_enable_o">
+      <obj_property name="ElementShortName">mem_enable_o</obj_property>
+      <obj_property name="ObjectShortName">mem_enable_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/dut/decoder_inst/led_enable_o">
+      <obj_property name="ElementShortName">led_enable_o</obj_property>
+      <obj_property name="ObjectShortName">led_enable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider106" type="divider">
+      <obj_property name="label">Memory</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/rd_addr1_i">
+      <obj_property name="ElementShortName">rd_addr1_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_addr1_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/rd_addr2_i">
+      <obj_property name="ElementShortName">rd_addr2_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_addr2_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/rd_data1_o">
+      <obj_property name="ElementShortName">rd_data1_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_data1_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/rd_data2_o">
+      <obj_property name="ElementShortName">rd_data2_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_data2_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/wr_addr_i">
+      <obj_property name="ElementShortName">wr_addr_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_addr_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/dut/memory_inst/wr_data_i">
+      <obj_property name="ElementShortName">wr_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_data_i[31:0]</obj_property>
+   </wvobject>
+</wave_config>

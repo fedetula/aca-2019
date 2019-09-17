@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module cpu(input  logic clk, rst,
            output logic [31:0] inst_addr,
            input  logic [31:0] inst_data,
@@ -32,7 +34,7 @@ module cpu(input  logic clk, rst,
        // Data Bus
        always_comb begin
           data_addr = alu_out;
-          data_out = rs1_data;
+          data_out = rs2_data;
        end 
        
        // Decoder 
@@ -68,6 +70,7 @@ module cpu(input  logic clk, rst,
                                                                    end
               {7'b?       , 5'b?, 5'b?, 3'b000, 5'b?, 7'b1100011}: begin  // BEQ
                                                                        pc_flow = INST_BEQ;
+                                                                       rf_write = 0;
                                                                        immed = 32'(signed'({inst_data[31], 
                                                                                             inst_data[7], 
                                                                                             inst_data[30:25], 
@@ -81,17 +84,21 @@ module cpu(input  logic clk, rst,
        always_comb
            pc_ctrl = (pc_flow == INST_BEQ && zero) ? BRANCH : SEQUENTIAL;
 
-       // PC 
-       always_ff @(posedge clk, posedge rst)
+       // PC (synchronous reset)
+       always_ff @(posedge clk)
            if (rst) pc <= '0;
            else     pc <= (pc_ctrl == BRANCH) ? pc + immed : pc + 4;
 
        // RF Write
+       initial
+           rf[0] = '0;
+
        always_comb rd_data = (rf_data_in == FROM_ALU) ? alu_out : data_in;
 
-       always_ff @(posedge clk)
+       // No need to add reset condition, ISA doesn't force any values here after reset
+       always_ff @(posedge clk) 
            if (rd_addr != '0 && rf_write)
-               rf[rd_addr] <= rd_data;
+                rf[rd_addr] <= rd_data;
 
        // RF Read
        always_comb begin
