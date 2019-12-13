@@ -2,7 +2,7 @@ AS = riscv64-unknown-elf-as
 OBJCOPY = riscv64-unknown-elf-objcopy
 MEM = fibonacci.mem
 
-%.o: %.S 
+%.o: %.S
 	@echo compiling $< ...
 	$(AS) -march=rv32i -o $@ $< 
 
@@ -10,11 +10,11 @@ MEM = fibonacci.mem
 	$(OBJCOPY) -O verilog $< $@
 
 %.mem: %.hex
-	python ../resources/hex2mem.py $< $@ 
+	python ../tools/hex2mem.py $< $@ 
 
 default: $(MEM)
 
 .PHONY: clean
 
 clean:
-	rm -f src/*.o mem_files/fibonacci.mem 
+	rm -f *.o *.mem 

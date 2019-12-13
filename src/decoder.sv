@@ -14,7 +14,7 @@ module decoder (
         led_enable_o = 0;
         mem_enable_o = 0;
         data_o = 32'bx;
-        
+   
         case (addr_i[10:9])
             2'b11:   led_enable_o = write_i; // led
             2'b10:   data_o       = switch_data_i; // switch
